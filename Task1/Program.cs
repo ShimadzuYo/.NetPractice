@@ -2,11 +2,11 @@
 
 namespace Task1
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello World!");
-        }
-    }
+   static class Program
+   {
+      private static void Main()
+      {
+         Task1.Start();
+      }
+   }
 }
