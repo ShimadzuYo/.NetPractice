@@ -2,7 +2,7 @@
 
 namespace Task1
 {
-    class Task2
+    public class SubTask2
     {
         public static void Start()
         {

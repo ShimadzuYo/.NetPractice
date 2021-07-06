@@ -2,7 +2,7 @@
 
 namespace Task1
 {
-    static class Task1
+    static class SubTask1
     {
         private const string DefaultDividend = "10";
         private const string DefaultDivisor = "10";
