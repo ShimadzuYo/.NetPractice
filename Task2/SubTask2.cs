@@ -8,7 +8,7 @@ namespace Task2
         public override void Start()
         {
             base.Start();
-            
+
             Console.WriteLine("What is your name?");
             string name = Console.ReadLine();
             Console.WriteLine("What is your surname?");

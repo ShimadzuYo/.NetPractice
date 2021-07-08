@@ -8,7 +8,7 @@ namespace Task1
         public override void Start()
         {
             base.Start();
-            
+
             Console.WriteLine("Enter Jake`s grade");
             int jakeGrade = int.Parse(Console.ReadLine());
             Console.WriteLine("Enter John`s grade");
