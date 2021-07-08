@@ -1,11 +1,14 @@
 ﻿using System;
+using Utilities;
 
-namespace PracticeTasks
+namespace Task2
 {
-    public class SubTask5
+    public class SubTask2 : BaseTask
     {
-        public static void Questionaire()
+        public override void Start()
         {
+            base.Start();
+            
             Console.WriteLine("What is your name?");
             string name = Console.ReadLine();
             Console.WriteLine("What is your surname?");

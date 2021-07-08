@@ -1,13 +1,11 @@
-﻿using System;
-
-namespace Task1
+﻿namespace Task1
 {
-   static class Program
+   public static class Program
    {
       private static void Main()
       {
-
-         Subtask6.Start();
+         var task1 = new SubTask1();
+         task1.Start();
       }
    }
 }

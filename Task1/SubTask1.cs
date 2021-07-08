@@ -1,14 +1,17 @@
 ﻿using System;
+using Utilities;
 
 namespace Task1
 {
-    static class SubTask1
+    public class SubTask1 : BaseTask
     {
         private const string DefaultDividend = "10";
         private const string DefaultDivisor = "10";
 
-        public static void Start()
+        public override void Start()
         {
+            base.Start();
+            
             Console.WriteLine("Enter first dividend");
             var dividend = int.Parse(Console.ReadLine() ?? DefaultDividend);
             Console.WriteLine("Enter second dividend");
@@ -18,7 +21,7 @@ namespace Task1
         }
 
 
-        // ctrl + p (inside method)
+        // ctrl + p (show argument hint inside method)
         // ctrl + q (show documentation)
         // alt + enter - show recommendations
         // alt + enter + enter - show & apply recommendations
