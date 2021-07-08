@@ -6,44 +6,23 @@ namespace Task1
     {
         public static void Start()
         {
-            int[] allTheValues = new int [3];
-            for (int i = 0; i <= 3; i++)
+            string[] valueNames = {"first", "second", "third"};
+            var values = new int [3];
+            // i = 0, i = 1, i = 2, i = 3 ( <= 3)
+            // i = 0, i = 1, i = 2 ( < 3)
+            for (var i = 0; i < values.Length; i++)
             {
-                if (i == 0)
-                {
-                    Console.WriteLine("Enter the first value");
-                    allTheValues[i] = Int32.Parse(Console.ReadLine());
-                }
-                else if (i == 1)
-                {
-                    Console.WriteLine("Enter the second value");
-                    allTheValues[i] = Int32.Parse(Console.ReadLine());
-                }
-                else
-                {
-                    Console.WriteLine("Enter the third value");
-                    allTheValues[i] = Int32.Parse(Console.ReadLine());
-                    break;
-                }
-
-                
+                Console.WriteLine($"Enter the {valueNames[i]} value");
+                values[i] = int.Parse(Console.ReadLine() ?? string.Empty);
             }
-
-            ;
+            
             Console.WriteLine("Enter key of the element for comparison");
-            int key = Int32.Parse(Console.ReadLine());
-            if (key == 0)
+            
+            var index = int.Parse(Console.ReadLine() ?? string.Empty);
+            for (var i = 0; i < values.Length; i ++)
             {
-                if (allTheValues[0] < allTheValues[1] && allTheValues[0] < allTheValues[2])
-                {
-                    Console.WriteLine($"{allTheValues[1]} > {allTheValues[0]}");
-                    Console.WriteLine($"{allTheValues[2]} > {allTheValues[0]}");
-                    Console.WriteLine($"{allTheValues[0]} = {allTheValues[0]}");
-                }
+                Console.WriteLine($"{values[index]} > {values[i]} = {values[index] > values[i]}");
             }
         }
     }
 }
-            
-        
-    
