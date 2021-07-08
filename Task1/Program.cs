@@ -6,8 +6,8 @@ namespace Task1
    {
       private static void Main()
       {
-         SubTask1.Start();
-         SubTask2.Start();
+
+         Subtask6.Start();
       }
    }
 }
