@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Utilities;
 
 namespace Task1
@@ -9,21 +10,22 @@ namespace Task1
         {
             base.Start();
 
+            string baseValue = "2";
             Console.WriteLine("Enter Jake`s grade");
-            int jakeGrade = int.Parse(Console.ReadLine());
+            var jakeGrade = int.Parse(Console.ReadLine() ?? baseValue);
             Console.WriteLine("Enter John`s grade");
-            int johnGrade = int.Parse(Console.ReadLine());
+            var johnGrade = int.Parse(Console.ReadLine() ?? baseValue);
             Console.WriteLine("Enter Jack`s grade");
-            int jackGrade = int.Parse(Console.ReadLine());
+            var jackGrade = int.Parse(Console.ReadLine() ?? baseValue);
             Console.WriteLine("Enter Jane`s grade");
-            int janeGrade = int.Parse(Console.ReadLine());
-            AverageCalc(jackGrade, johnGrade, jackGrade, janeGrade);
+            var janeGrade = int.Parse(Console.ReadLine() ?? baseValue);
+            var result = CalculateAverage(jackGrade, johnGrade, jakeGrade, janeGrade);
+            Console.WriteLine($"The average grade of these retards is {result}");
         }
 
-        static void AverageCalc(int mark1, int mark2, int mark3, int mark4)
+        private static double CalculateAverage(params int[] marks)
         {
-            var averageGrade = ((mark1) + (mark2) + (mark3) + (mark4)) / 4;
-            Console.WriteLine($"The average grade of these retards is {averageGrade}");
+            return (double) marks.Sum() / marks.Length;
         }
     }
 }

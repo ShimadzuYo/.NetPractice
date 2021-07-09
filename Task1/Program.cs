@@ -12,8 +12,8 @@
     {
         private static void Main()
         {
-            var task1 = new SubTask1();
-            task1.Start();
+            var task2ForLoop = new SubTask2ForLoop();
+            task2ForLoop.Start();
         }
     }
 }
