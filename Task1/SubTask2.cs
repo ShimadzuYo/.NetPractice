@@ -10,7 +10,7 @@ namespace Task1
         {
             base.Start();
 
-            string baseValue = "2";
+            const string baseValue = "2";
             Console.WriteLine("Enter Jake`s grade");
             var jakeGrade = int.Parse(Console.ReadLine() ?? baseValue);
             Console.WriteLine("Enter John`s grade");

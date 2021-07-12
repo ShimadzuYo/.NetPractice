@@ -10,16 +10,16 @@ namespace Task2
             base.Start();
 
             Console.WriteLine("What is your name?");
-            string name = Console.ReadLine();
+            var name = Console.ReadLine();
             Console.WriteLine("What is your surname?");
-            string surname = Console.ReadLine();
+            var surname = Console.ReadLine();
             Console.WriteLine("Where are you from my man or woman?");
-            string country = Console.ReadLine();
+            var country = Console.ReadLine();
             Console.WriteLine("Which year were you born?");
-            int yearOfBirth = Int32.Parse(Console.ReadLine());
+            var yearOfBirth = int.Parse(Console.ReadLine());
 
 
-            int age = AgeCalc(yearOfBirth);
+            int age = CalculateAge(yearOfBirth);
             if (age > 0)
             {
                 Console.WriteLine($"Hello {name} {surname}. You are {age} years old and you are from {country}.");
@@ -30,9 +30,9 @@ namespace Task2
             }
         }
 
-        static int AgeCalc(int year)
+        private static int CalculateAge(int year)
         {
-            int result = 2021 - year;
+            var result = DateTime.Today.Year - year;
             return result;
         }
     }

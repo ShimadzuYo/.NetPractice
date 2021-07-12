@@ -14,15 +14,15 @@ namespace Task1
         {
             base.Start();
             var retards = new List<string> { };
-            var classSizeDefault = "5";
-            var defaultMark = "2";
+            const string classSizeDefault = "5";
+            const string defaultMark = "2";
             var marks = new List<int>();
             Console.WriteLine("How many students do you have?");
             var classSize = int.Parse(Console.ReadLine() ?? classSizeDefault);
             for (var i = 0; i < classSize; i++)
             {
                 Console.WriteLine("Enter students` name please");
-                string name = Console.ReadLine();
+                var name = Console.ReadLine();
                 retards.Add(name);
                 Console.WriteLine("Enter their mark");
                 var mark = int.Parse(Console.ReadLine() ?? defaultMark);
