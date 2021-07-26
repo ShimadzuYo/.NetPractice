@@ -12,21 +12,27 @@ namespace Task3
         {
             const string defaultSalary = "1000";
             const int staffCount = 3;
-            var salaries = new List<int>();
+            var zariki = new List<int>();
             for (var i = 0; i < staffCount; i++)
             {
                 Console.WriteLine("Enter the salary of the shitcunt!");
                 var salary = int.Parse(Console.ReadLine() ?? defaultSalary);
-                salaries.Add(salary);
+                zariki.Add(salary);
             }
 
-            var whoseDickIsTheBiggest = salaries.Max() - salaries.Min();
-            Console.WriteLine($"{whoseDickIsTheBiggest} is the difference between the bum and the alfa.");
-            if (whoseDickIsTheBiggest > 10000)
+            static int WhoseDickIsTheBiggest(List<int> salaries)
+            {
+                var difference = salaries.Max() - salaries.Min();
+                return difference;
+            }
+
+            var diff = WhoseDickIsTheBiggest(zariki);
+            Console.WriteLine($"{diff} is the difference between the bum and the alfa.");
+            if (diff > 10000)
             {
                 Console.WriteLine("What the fuck is this difference my man, I`m calling IRS!");
             }
-            else if (whoseDickIsTheBiggest < 10000)
+            else if (diff < 10000)
             {
                 Console.WriteLine("You good.");
             }
