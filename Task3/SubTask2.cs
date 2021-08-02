@@ -20,13 +20,9 @@ namespace Task3
                 zariki.Add(salary);
             }
 
-            static int WhoseDickIsTheBiggest(List<int> salaries)
-            {
-                var difference = salaries.Max() - salaries.Min();
-                return difference;
-            }
+            Maximum(zariki);
 
-            var diff = WhoseDickIsTheBiggest(zariki);
+            var diff = Maximum(zariki);
             Console.WriteLine($"{diff} is the difference between the bum and the alfa.");
             if (diff > 10000)
             {
@@ -36,6 +32,47 @@ namespace Task3
             {
                 Console.WriteLine("You good.");
             }
+        }
+
+        // private static int WhoseDickIsTheBiggest(IReadOnlyList<int> sals)
+        // {
+        //     var tempMax = sals[0];
+        //     var tempMin = sals[0];
+        //     for (var x = 0; x < sals.Count - 1; x++)
+        //     {
+        //         if (x < sals[x + 1])
+        //         {
+        //             tempMin = x;
+        //         }
+        //         else if (x > sals[x + 1])
+        //         {
+        //             tempMax = x;
+        //         }
+        //     }
+        //
+        //     var difference = tempMax - tempMin;
+        //
+        //     return difference;
+        // }
+
+        private static int Maximum(List<int> gavno)
+        {
+            var max = gavno[0];
+            var min = gavno[0];
+            for (var i = 1; i < gavno.Count; i++)
+            {
+                if (gavno[i] > max)
+                {
+                    max = gavno[i];
+                }
+
+                if (gavno[i] < min)
+                {
+                    min = gavno[i];
+                }
+            }
+
+            return max - min;
         }
     }
 }
