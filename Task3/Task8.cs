@@ -16,24 +16,7 @@ namespace Task3
             ages.Add(AgeInYears(theAge));
             ages.Add(AgeInMonths(theAge));
             ages.Add(AgeInDays(theAge));
-            foreach (var results in ages)
-            {
-                if (results == ages[0])
-                {
-                    Console.WriteLine($"Years: {ages[0]}");
-                }
-
-                if (results == ages[1])
-                {
-                    Console.WriteLine($"Months: {ages[1]}");
-                }
-
-                if (results == ages[2])
-                {
-                    Console.WriteLine($"Days: {ages[2]}");
-                }
-            }
-            
+            Console.WriteLine($"Years:{ages[0]}; Months: {ages[1]}; Days: {ages[2]};");
         }
 
         private static int AgeInYears(int age)
