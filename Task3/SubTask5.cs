@@ -9,6 +9,7 @@ namespace Task3
     {
         public override void Start()
         {
+            base.Start();
             string[] array1 = {"1", "2", "8", "23", "11", "98", "35", "58", "70", "41"};
             Console.WriteLine("Array A:");
             foreach (var v in array1)

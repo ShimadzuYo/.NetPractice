@@ -10,6 +10,7 @@ namespace Task3
     {
         public override void Start()
         {
+            base.Start();
             const string defaultSalary = "1000";
             const int staffCount = 3;
             var zariki = new List<int>();

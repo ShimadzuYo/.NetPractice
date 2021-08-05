@@ -8,6 +8,7 @@ namespace Task3
     {
         public override void Start()
         {
+            base.Start();
             const string defaultNum = "0";
             Console.WriteLine("Enter the first number please: ");
             var num1 = int.Parse(Console.ReadLine() ?? defaultNum);

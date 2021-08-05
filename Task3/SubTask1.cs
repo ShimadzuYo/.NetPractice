@@ -9,6 +9,7 @@ namespace Task3
     {
         public override void Start()
         {
+            base.Start();
             const string defaultNumberOne = "1";
             const string defaultNumberTwo = "2";
             Console.WriteLine("Enter the first number cunt!");

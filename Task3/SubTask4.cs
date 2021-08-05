@@ -8,6 +8,7 @@ namespace Task3
     {
         public override void Start()
         {
+            base.Start();
             const int divisionX = 0;
             const int divisionY = 0;
             const string defaultHouseCoordinatesX = "0";

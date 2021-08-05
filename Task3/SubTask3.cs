@@ -10,6 +10,7 @@ namespace Task3
     {
         public override void Start()
         {
+            base.Start();
             const string defaultGuestNumber = "1";
             const string defaultCakeRadius = "14.0";
             Console.WriteLine("How many guests will be present (including you)?");

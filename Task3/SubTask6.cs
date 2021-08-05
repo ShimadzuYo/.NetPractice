@@ -9,6 +9,7 @@ namespace Task3
     {
         public override void Start()
         {
+            base.Start();
             var radii = new List<int>() {12, 35, 4};
             var areas = new List<double>() { };
             foreach (var a in radii)
