@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Utilities;
 using System.Linq;
+using System.Security.Cryptography;
 
 namespace Task3
 {
@@ -10,19 +11,18 @@ namespace Task3
         public override void Start()
         {
             base.Start();
-            string[] array1 = {"1", "2", "8", "23", "11", "98", "35", "58", "70", "41"};
-            Console.WriteLine("Array A:");
-            foreach (var v in array1)
-            {
-                Console.WriteLine(v);
-            }
+            var array1 = new int [10];
+            Method1(array1);
 
-            string[] array2 = {"1", "2", "8", "23", "11", "98", "35", "58", "70", "41"};
+            Console.WriteLine("Array A:");
+            PrintOutArray(array1);
+
+
+            var array2 = new int [10];
+            Method2(array2);
             Console.WriteLine("Array B:");
-            foreach (var f in array2)
-            {
-                Console.WriteLine(f);
-            }
+            PrintOutArray(array2);
+
 
             var array3 = new int[10];
             const int max = 10;
@@ -31,36 +31,46 @@ namespace Task3
             {
                 if (array1.Length == array2.Length)
                 {
-                    array3[i] = int.Parse(array1[i]) + int.Parse(array2[i]);
+                    array3[i] = array1[i] + array2[i];
                 }
             }
 
             Console.WriteLine("Array C:");
-            foreach (var c in array3)
-            {
-                Console.WriteLine(c);
-            }
+            PrintOutArray(array3);
 
             var maxTrue = array3.Max();
             Console.WriteLine($"MAX in array C = {maxTrue}");
-            var last3 = array3[^3];
-            var last2 = array3[^2];
-            var last1 = array3[^1];
-            var minOfThree = 0;
-            if (last3 < last2 && last3 < last1)
-            {
-                minOfThree = last3;
-            }
-            else if (last2 < last3 && last2 < last1)
-            {
-                minOfThree = last2;
-            }
-            else if (last1 < last2 && last1 < last3)
-            {
-                minOfThree = last1;
-            }
+            var mins = array3.Skip(array3.Length - 3);
+            var minElement = mins.Min();
+            Console.WriteLine($"{minElement} is the smallest of the last three");
+        }
 
-            Console.WriteLine($"MIN of last 3 in array C = {minOfThree}");
+
+        static void PrintOutArray(Array arr)
+        {
+            foreach (var x in arr)
+            {
+                Console.WriteLine(x);
+            }
+        }
+
+        static void Method1(int[] array)
+        {
+            Random randNum = new Random();
+            for (var c = 0; c < array.Length; c++)
+            {
+                array[c] = randNum.Next(-100, 100);
+            }
+        }
+
+        static void Method2(int[] array)
+        {
+            var defaultNum = "1";
+            for (var n = 0; n < array.Length; n++)
+            {
+                Console.WriteLine("Enter the value please");
+                array[n] = int.Parse(Console.ReadLine() ?? defaultNum);
+            }
         }
     }
 }
