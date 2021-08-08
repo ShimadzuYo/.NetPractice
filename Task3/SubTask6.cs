@@ -11,21 +11,21 @@ namespace Task3
         {
             base.Start();
             var radii = new List<double>() {12, 35, 4};
-            var result = CalculateRadii(radii);
+            var result = CalculateCircleArea(radii);
 
 
-            foreach (var b in result)
+            foreach (var radius in result)
             {
-                Console.WriteLine(b);
+                Console.WriteLine(radius);
             }
         }
 
-        static List<double> CalculateRadii(ICollection<double> radii)
+        private static List<double> CalculateCircleArea(ICollection<double> radii)
         {
             var areas = new List<double>();
-            foreach (var a in radii)
+            foreach (var radius in radii)
             {
-                var s = Math.PI * (a * a);
+                var s = Math.PI * (radius * radius);
                 areas.Add(s);
             }
 

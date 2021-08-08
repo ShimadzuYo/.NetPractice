@@ -11,27 +11,26 @@ namespace Task3
         public override void Start()
         {
             base.Start();
-            var array1 = new int [10];
-            Method1(array1);
+            var array1 = GenerateArrayWithRandomElements();
+
+
+            var array2 = GenerateArrayWithUserInput();
 
             Console.WriteLine("Array A:");
             PrintOutArray(array1);
-
-
-            var array2 = new int [10];
-            Method2(array2);
             Console.WriteLine("Array B:");
             PrintOutArray(array2);
 
 
-            var array3 = new int[10];
+            var array3 = new List<int>();
             const int max = 10;
 
             for (var i = 0; i < max; i++)
             {
-                if (array1.Length == array2.Length)
+                if (array1.Count == array2.Count)
                 {
-                    array3[i] = array1[i] + array2[i];
+                    var sum = array1[i] + array2[i];
+                    array3.Add(sum);
                 }
             }
 
@@ -40,37 +39,46 @@ namespace Task3
 
             var maxTrue = array3.Max();
             Console.WriteLine($"MAX in array C = {maxTrue}");
-            var mins = array3.Skip(array3.Length - 3);
+            var mins = array3.Skip(array3.Count - 3);
             var minElement = mins.Min();
             Console.WriteLine($"{minElement} is the smallest of the last three");
         }
 
 
-        static void PrintOutArray(Array arr)
+        static void PrintOutArray(List<int> array)
         {
-            foreach (var x in arr)
+            foreach (var element in array)
             {
-                Console.WriteLine(x);
+                Console.WriteLine(element);
             }
         }
 
-        static void Method1(int[] array)
+        private static List<int> GenerateArrayWithRandomElements(int size = 10, int minRandom = -100,
+            int maxRandom = 100)
         {
-            Random randNum = new Random();
-            for (var c = 0; c < array.Length; c++)
+            var randomArray = new List<int>();
+            var randNum = new Random();
+            for (var c = 0; c < size; c++)
             {
-                array[c] = randNum.Next(-100, 100);
+                var randomElement = randNum.Next(minRandom, maxRandom);
+                randomArray.Add(randomElement);
             }
+
+            return randomArray;
         }
 
-        static void Method2(int[] array)
+        private static List<int> GenerateArrayWithUserInput(int size = 10)
         {
-            var defaultNum = "1";
-            for (var n = 0; n < array.Length; n++)
+            var inputArray = new List<int>();
+            const string defaultNum = "1";
+            for (var n = 0; n < size; n++)
             {
                 Console.WriteLine("Enter the value please");
-                array[n] = int.Parse(Console.ReadLine() ?? defaultNum);
+                var element = int.Parse(Console.ReadLine() ?? defaultNum);
+                inputArray.Add(element);
             }
+
+            return inputArray;
         }
     }
 }
