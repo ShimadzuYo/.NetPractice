@@ -9,6 +9,7 @@ namespace Task4
     {
         public override void Start()
         {
+            base.Start();
             const string defaultMinRange = "1";
             const string defaultMaxRange = "5";
             Console.WriteLine("Enter the range");
@@ -20,20 +21,20 @@ namespace Task4
             var theList = new List<int>();
             theList.AddRange(Enumerable.Range(minRange, range));
             OddNumSum(theList);
+        }
 
-
-            static void OddNumSum(List<int> subject)
+        static void OddNumSum(List<int> subject)
+        {
+            List<int> oddNums = new List<int>();
+            for (var i = 0; i < subject.Count; i++)
             {
-                List<int> oddNums = new List<int>();
-                for (var i = 0; i < subject.Count; i++)
+                if (subject[i] % 2 == 1)
                 {
-                    if (subject[i] % 2 == 1)
-                    {
-                        oddNums.Add(subject[i]);
-                    }
+                    oddNums.Add(subject[i]);
                 }
-                Console.WriteLine($"Sum of odd numbers in range: {oddNums.Sum()}");
             }
+
+            Console.WriteLine($"Sum of odd numbers in range: {oddNums.Sum()}");
         }
     }
 }
