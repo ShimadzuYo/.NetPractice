@@ -23,14 +23,14 @@ namespace Task4
             OddNumSum(theList);
         }
 
-        static void OddNumSum(List<int> subject)
+        private static void OddNumSum(List<int> subject)
         {
             List<int> oddNums = new List<int>();
-            for (var i = 0; i < subject.Count; i++)
+            foreach (var t in subject)
             {
-                if (subject[i] % 2 == 1)
+                if (t % 2 != 0)
                 {
-                    oddNums.Add(subject[i]);
+                    oddNums.Add(t);
                 }
             }
 
