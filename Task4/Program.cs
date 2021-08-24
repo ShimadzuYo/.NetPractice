@@ -6,8 +6,8 @@ namespace Task4
     {
         private static void Main(string[] args)
         {
-            var subTask4V2 = new SubTask4V2();
-            subTask4V2.Start();
+            var subTask6 = new SubTask6();
+            subTask6.Start();
         }
     }
 }

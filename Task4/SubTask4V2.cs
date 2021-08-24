@@ -16,24 +16,40 @@ namespace Task4
             var minRange = int.Parse(Console.ReadLine() ?? defaultMinRange);
             var maxRangeInput = int.Parse(Console.ReadLine() ?? defaultMaxRange);
             Console.WriteLine($"From {minRange} to {maxRangeInput}");
-            OddNumSum(minRange, maxRangeInput);
+            var theResult = OddNumSum(minRange, maxRangeInput);
+            Console.WriteLine($"The sum of all the odd numbers is {theResult}");
         }
 
-        private static void OddNumSum(int minRange, int maxRange)
+        private static int OddNumSum(int minRange, int maxRange)
         {
-            var range = (maxRange + 1) - minRange;
-            var theList = new List<int>();
-            var oddList = new List<int>();
-            theList.AddRange(Enumerable.Range(minRange, range));
-            foreach (var member in theList)
+            int oddSum = 0;
+            var numbers = Enumerable.Range(minRange, maxRange);
+            foreach (var number in numbers)
             {
-                if (member % 2 != 0)
+                if (number % 2 != 0)
                 {
-                    oddList.Add(member);
+                    oddSum += number;
                 }
             }
 
-            Console.WriteLine($"The sum of odds is {oddList.Sum()}");
+            return oddSum;
         }
+
+        // private static void OddNumSum(int minRange, int maxRange)
+        // {
+        //     var range = (maxRange + 1) - minRange;
+        //     var theList = new List<int>();
+        //     var oddList = new List<int>();
+        //     theList.AddRange(Enumerable.Range(minRange, range));
+        //     foreach (var member in theList)
+        //     {
+        //         if (member % 2 != 0)
+        //         {
+        //             oddList.Add(member);
+        //         }
+        //     }
+        //
+        //     Console.WriteLine($"The sum of odds is {oddList.Sum()}");
+        // }
     }
 }
