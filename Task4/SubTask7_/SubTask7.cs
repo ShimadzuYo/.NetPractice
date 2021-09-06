@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Utilities;
 
 namespace Task4.SubTask7_
 {
     public class SubTask7 : BaseTask
     {
-        private const int DefaultCarCount = 50;
-        private const int DefaultSeatCount = 50;
+        private const int DefaultCarCount = 18;
+        private const int DefaultSeatCount = 20;
 
         public override void Start()
         {
