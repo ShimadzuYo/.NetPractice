@@ -6,9 +6,6 @@ namespace Task4.SubTask7_
 {
     public class Train
     {
-        // field
-        // public int CarCount;
-        // property
         private const int VacantSeat = 0;
         private const int OccupiedSeat = 1;
 
@@ -27,7 +24,7 @@ namespace Task4.SubTask7_
             InitializeSeatsRandomly();
         }
 
-        public void PrintSeats()
+        public virtual void PrintSeats()
         {
             PrintSeatsNumbersHeader();
             for (var row = 0; row < Seats.GetLength(0); row++)
@@ -68,7 +65,7 @@ namespace Task4.SubTask7_
             return vacantSeatNumbers;
         }
 
-        private void InitializeSeatsRandomly()
+        public void InitializeSeatsRandomly()
         {
             var random = new Random();
             for (var row = 0; row < Seats.GetLength(0); row++)
@@ -87,6 +84,8 @@ namespace Task4.SubTask7_
             {
                 Console.Write(GetSeatIdentifier(row, column) + "  ");
             }
+            // Глобус, верхний Джал, Тыналиева-Южная Магистраль
+            // 8 мкр. д. 7
         }
 
         private string GetSeatIdentifier(int row, int column)
