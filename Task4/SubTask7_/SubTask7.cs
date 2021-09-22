@@ -23,7 +23,7 @@ namespace Task4.SubTask7_
             const string ExitString = "VSE!";
             while (true)
             {
-                Console.Write("Enter car number: ");
+                Console.Write("Enter car number to see vacant seats in that car: ");
                 var userInput = Console.ReadLine() ?? string.Empty;
                 if (userInput == ExitString)
                 {
@@ -31,15 +31,21 @@ namespace Task4.SubTask7_
                     break;
                 }
 
+               
+
+
                 var carNumber = int.Parse(userInput);
                 if (carNumber > train.CarCount)
                 {
                     Console.WriteLine("TAKOGO VAGONA NET, DAUN, DEBIL, EBAN!");
                     continue;
                 }
+
                 train.PrintCarByNumber(carNumber);
                 Console.WriteLine();
             }
+            
+            
         }
     }
 }
