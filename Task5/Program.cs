@@ -9,8 +9,8 @@ namespace Task5
     {
         private static void Main(string[] args)
         {
-            var SubTask2 = new SubTask2();
-            SubTask2.Start();
+            var SubTask3 = new SubTask3();
+            SubTask3.Start();
         }
     }
 }
