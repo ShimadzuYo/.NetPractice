@@ -1,14 +1,14 @@
 ﻿using System;
 
 
-namespace Task6
+namespace Task7
 {
     class Program
     {
         private static void Main(string[] args)
         {
-            var subTask1 = new SubTask1();
-            subTask1.Start();
+            var Recursion = new Recursion();
+            Recursion.Start();
 
         }
     }
