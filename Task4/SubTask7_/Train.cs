@@ -8,6 +8,7 @@ namespace Task4.SubTask7_
     {
         private const int VacantSeat = 0;
         private const int OccupiedSeat = 1;
+        private const int BookedSeat = 2;
 
         public int CarCount { get; }
         public int SeatCount { get; }
@@ -46,7 +47,7 @@ namespace Task4.SubTask7_
         private void PrintVacantSeatsInfo(int carNumber)
         {
             var vacantSeatNumbers = GetVacantSeatsByCarNumber(carNumber);
-            
+
             Console.WriteLine($"Vacant seats count: {vacantSeatNumbers.Count}");
 
             var vacantSeats = vacantSeatNumbers.Select(x => x.ToString("00"));
@@ -93,6 +94,7 @@ namespace Task4.SubTask7_
             return Seats[row, column] == OccupiedSeat ? OccupiedSeatCharacter : " ";
         }
 
+
         private void PrintSeatsNumbersHeader()
         {
             Console.Write("  ");
@@ -103,5 +105,24 @@ namespace Task4.SubTask7_
 
             Console.WriteLine();
         }
+        
+        
+
+        
+
+        // public string Booking(List<int> vacantSeatsInTheCar)
+        // {
+        //     Console.WriteLine("Which seat would you like to book?");
+        //     var bookedSeat = "+";
+        //     foreach (var seat in vacantSeatsInTheCar)
+        //     {
+        //         if (seat == VacantSeat)
+        //         {
+        //             bookedSeat = seat.ToString();
+        //         }
+        //     }
+        //
+        //     return bookedSeat;
+        // }
     }
 }

@@ -24,10 +24,6 @@ namespace Task4.SubTask7_
             const string ExitString = "VSE!";
             while (true)
             {
-                
-            }
-            while (true)
-            {
                 Console.Write("Enter car number: ");
                 var userInput = Console.ReadLine() ?? string.Empty;
                 if (userInput == ExitString)
