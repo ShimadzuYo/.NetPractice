@@ -25,7 +25,7 @@ namespace Task1
 
         private static double CalculateAverage(params int[] marks)
         {
-            return (double) marks.Sum() / marks.Length;
+            return (double)marks.Sum() / marks.Length;
         }
     }
 }
