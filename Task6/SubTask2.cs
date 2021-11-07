@@ -31,6 +31,7 @@ namespace Task6
             string op = "";
             Console.WriteLine("Enter the operation pls - avg, min or max");
             var theOpChoice = Console.ReadLine();
+            // TODO: Refactor with delegates 
             if (theOpChoice == "avg")
             {
                 theResult = myInts.Sum() / myInts.Count;

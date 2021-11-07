@@ -11,15 +11,14 @@ namespace Task6
             base.Start();
             var nums = new List<int>()
             {
-                1,2,3,4,5,6,7,8,9,10
+                1, 2, 3, 4, 5, 6, 7, 8, 9, 10
             };
             TheJob(nums);
-            
         }
 
         private static void TheJob(List<int> subject)
         {
-            for (var i = subject.Count-1; i == 0; i--)
+            for (var i = subject.Count - 1; i == 0; i--)
             {
                 Console.WriteLine(subject[i]);
             }
