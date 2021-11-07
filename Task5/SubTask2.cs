@@ -11,6 +11,7 @@ namespace Task5
         {
             base.Start();
 
+            // TODO: remake with classes
             Dictionary<string, int> catFood = new Dictionary<string, int>
             {
                 { "SAUSAGE", 1 },
@@ -41,6 +42,7 @@ namespace Task5
                 Console.WriteLine("Your cat is already full.");
                 return;
             }
+            // TODO: get rid of nesting 
             if (levelOfFullness < fullAt)
             {
                 do
