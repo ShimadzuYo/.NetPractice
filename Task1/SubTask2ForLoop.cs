@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Utilities;
 
-
 namespace Task1
 
 {
@@ -29,7 +28,7 @@ namespace Task1
                 marks.Add(mark);
             }
 
-            var calculatedResult = (double) marks.Sum() / marks.Count;
+            var calculatedResult = (double)marks.Sum() / marks.Count;
             Console.WriteLine($"Here is their average score: {calculatedResult}");
         }
     }
