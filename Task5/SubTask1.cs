@@ -11,6 +11,7 @@ namespace Task5
     {
         public override void Start()
         {
+            // TODO: remake with classes
             Dictionary<string, double> catFood = new Dictionary<string, double>
             {
                 { "Shit", 1 },

@@ -13,6 +13,7 @@ namespace Task5
         {
             base.Start();
 
+            // TODO: remake with classes
             Dictionary<string, int> catFood = new Dictionary<string, int>
             {
                 { "SAUSAGE", 1 },
