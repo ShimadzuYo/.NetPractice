@@ -19,19 +19,24 @@ namespace Task8
                 if (input == "NEXT")
                 {
                     firstTv.GoNext();
-                    
+                    Console.WriteLine("What do you want to do next?");
+                    input = Console.ReadLine().ToUpper();
+
                 }
 
                 if (input == "BACK")
                 {
                     firstTv.GoBack();
+                    Console.WriteLine("What do you want to do next?");
+                    input = Console.ReadLine().ToUpper();
 
                 }
 
                 if (input == "GOTO")
                 {
                     firstTv.GoTo();
-                    continue;
+                    Console.WriteLine("What do you want to do next?");
+                    input = Console.ReadLine().ToUpper();
                 }
             } while (input != "OFF");
         }
