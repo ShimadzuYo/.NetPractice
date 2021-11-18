@@ -9,7 +9,8 @@ namespace Task9
         {
             base.Start();
             var storeTest = new Store();
-            storeTest.Inspection(storeTest);
+            storeTest.Inspect(storeTest);
+            
             
         }
     }
