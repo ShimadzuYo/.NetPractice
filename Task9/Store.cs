@@ -7,92 +7,58 @@ namespace Task9
 {
     public class Store
     {
-        public List<Product> Products = new List<Product>();
-        public int maxProd = 20;
+        private readonly List<Product> _productsInStock = new();
+        private const int MaxProd = 20;
 
-        private List<string> namesOfProducts = new()
+        private readonly List<string> _productNames = new()
         {
-            "Fish", "Salt", "Milk", "Canned meat", "Corn"
+            "Fish",  "Milk"
         };
+
+        private void GetRandomStoragePlace(Product subject)
+        {
+            var random = new Random();
+            var die = random.Next(1, 2);
+            var storagePlace = die == 2 ? "Icebox" : "Showcase";
+            subject.storagePlace = storagePlace;
+
+
+        }
+
+        private DateTime GetRandomDeliveryTime()
+        {
+            
+            var random = new Random();
+            var minusDays = random.Next(1,200);
+            DateTime deliveryTime = DateTime.Now.AddDays(-minusDays);
+            return deliveryTime;
+        }
 
 
         public Store()
         {
-            var random = new Random();
-
-            for (var x = 0; x < maxProd; x++)
+            do
             {
-                var prod = new Product();
-                var nameChoice = random.Next(0, namesOfProducts.Count);
-                prod.name = namesOfProducts[nameChoice];
-                switch (prod.name)
+                var random = new Random();
+                var productName = _productNames[random.Next(0, _productNames.Count)];
+                
+                var deliveryTime = GetRandomDeliveryTime();
+                Product productToAdd = productName switch
                 {
-                    case "Fish":
-                        prod.storageLife = 20;
-                        break;
-                    case "Milk":
-                        prod.storageLife = 60;
-                        break;
-                    case "Salt":
-                        prod.storageLife = double.PositiveInfinity;
-                        break;
-                    case "Corn":
-                        prod.storageLife = 150;
-                        break;
-                    case "Canned meat":
-                        prod.storageLife = 180;
-                        break;
-                }
+                    "Fish" => new Fish(storagePlace, deliveryTime),
+                    "Milk" => new Milk(storagePlace, deliveryTime),
+                    _ => null
+                };
+                GetRandomStoragePlace(productToAdd);
+                _productsInStock.Add(productToAdd);
+                
+            } while (_productsInStock.Count < MaxProd);
+           
 
-                Products.Add(prod);
-            }
-
-            DetermineStorage(Products);
-            DetermineStorageLife(Products);
-        }
-
-        public void DetermineStorage(List<Product> subject)
-        {
-            var random = new Random();
-
-            foreach (var product in subject)
+            foreach (var productInStock in _productsInStock)
             {
-                var storageChoice = random.Next(0, 10);
-                if (storageChoice % 2 == 0)
-                {
-                    product.storagePlace = "freezer";
-                }
-
-                if (storageChoice % 2 == 1)
-                {
-                    product.storagePlace = "shelf";
-                }
-            }
-        }
-
-        public void Inspect(Store subject)
-        {
-            var theCount = subject.Products.Count;
-            Console.WriteLine(theCount);
-            foreach (var prod in subject.Products)
-            {
-                Console.WriteLine($"{prod.name} {prod.storagePlace} {prod.storageLife}");
-            }
-        }
-
-        public void DetermineStorageLife(List<Product> subject)
-        {
-            foreach (var product in subject)
-            {
-                switch (product.name)
-                {
-                    case "Milk" when product.storagePlace == "shelf":
-                        product.storageLife /= 2;
-                        break;
-                    case "Fish" when product.storagePlace == "shelf":
-                        product.storageLife /= 6;
-                        break;
-                }
+                // productInStock.IsFresh();
+                Console.WriteLine($"{productInStock.Name} {productInStock.DeliveryTimeStamp} {productInStock.StorageLifeDays} ");
             }
         }
     }

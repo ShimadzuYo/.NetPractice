@@ -1,98 +1,69 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Task8
 {
     public class Tv
     {
-        public int _maxChannels = Channels.Count;
-        public int CurrentChannelNum;
-
-        public static Dictionary<int, string> Channels = new Dictionary<int, string>()
+        public static readonly List<string> AvailableChannels = new()
         {
-            { 1, "Perviy canal" },
-            { 2, "Rossiya" },
-            { 3, "Kultura" }
+            { null },
+            { "Perviy kanal" },
+            { "Kultura" },
+            { "MTV" },
+            { "Zadrot TV" },
+            { "Hustler" }
         };
+
+        public readonly int MaxChannels = AvailableChannels.Count;
+        public int CurrentChannelNum;
 
 
         public Tv()
         {
             var randomizer = new Random();
-            var channelNum = randomizer.Next(1, _maxChannels);
-            string channelName = null;
-            foreach (var x in Channels)
-            {
-                if (channelNum == x.Key)
-                {
-                    channelName = x.Value;
-                }
-            }
-
-            CurrentChannelNum = channelNum;
-
-
-            Console.WriteLine($"You are currently watching channel number {CurrentChannelNum} - {channelName}");
+            CurrentChannelNum = randomizer.Next(0, MaxChannels);
+            Console.WriteLine(
+                $"You are currently watching channel number {CurrentChannelNum} - {AvailableChannels[CurrentChannelNum]}");
         }
 
 
         public void GoNext()
         {
-            CurrentChannelNum++;
-            string channelName = null;
-            foreach (var x in Channels)
+            if (CurrentChannelNum >= MaxChannels - 1)
             {
-                if (CurrentChannelNum == x.Key)
-                {
-                    channelName = x.Value;
-                }
+                Console.WriteLine("You have exceeded the channel limit and are being redirected to the first channel");
+                GoTo(1);
+                return;
             }
 
-            Console.WriteLine($"Current channel is {CurrentChannelNum} - {channelName} now");
+            CurrentChannelNum++;
+            Console.WriteLine($"Current channel is {CurrentChannelNum} - {AvailableChannels[CurrentChannelNum]} now");
         }
 
         public void GoBack()
         {
-            CurrentChannelNum--;
             if (CurrentChannelNum <= 0)
             {
                 Console.WriteLine("There is no such channel");
                 return;
             }
 
-            string channelName = null;
-            foreach (var x in Channels)
-            {
-                if (CurrentChannelNum == x.Key)
-                {
-                    channelName = x.Value;
-                }
-            }
-
-            Console.WriteLine($"Current channel is {CurrentChannelNum} - {channelName} now");
+            CurrentChannelNum--;
+            Console.WriteLine($"Current channel is {CurrentChannelNum} - {AvailableChannels[CurrentChannelNum]} now");
         }
 
-        public void GoTo()
+        public void GoTo(int channel)
         {
-            Console.WriteLine("Enter channel number please");
-            var channel = Int32.Parse(Console.ReadLine());
             CurrentChannelNum = channel;
-            if (CurrentChannelNum <= 0)
+            if (CurrentChannelNum <= 0 || CurrentChannelNum > MaxChannels)
             {
                 Console.WriteLine("There is no such channel");
                 return;
             }
-            string channelName = null;
-            foreach (var x in Channels)
-            {
-                if (CurrentChannelNum == x.Key)
-                {
-                    channelName = x.Value;
-                }
-            }
 
-            Console.WriteLine($"Current channel is {CurrentChannelNum} - {channelName} now");
-           
+            Console.WriteLine($"Current channel is {CurrentChannelNum} - {AvailableChannels[channel]} now");
         }
     }
 }
