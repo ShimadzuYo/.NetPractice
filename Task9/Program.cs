@@ -1,4 +1,5 @@
 ﻿using System;
+using Task9.Products;
 
 namespace Task9
 {
@@ -8,6 +9,7 @@ namespace Task9
         {
             var SubTask1 = new SubTask1();
             SubTask1.Start();
+            Console.ReadKey();
         }
     }
 }

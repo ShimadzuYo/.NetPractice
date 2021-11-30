@@ -1,64 +1,68 @@
-﻿using System.Collections.Generic;
-using System;
-using System.Data.SqlTypes;
-using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using Task9.Products;
 
 namespace Task9
 {
     public class Store
     {
+        private readonly Random _random = new();
         private readonly List<Product> _productsInStock = new();
-        private const int MaxProd = 20;
+        private const int MaxProducts = 20;
 
         private readonly List<string> _productNames = new()
         {
-            "Fish",  "Milk"
+            "Fish", "Milk", "Salt", "Corn"
         };
 
-        private void GetRandomStoragePlace(Product subject)
+        private string GetRandomStoragePlace()
         {
-            var random = new Random();
-            var die = random.Next(1, 2);
-            var storagePlace = die == 2 ? "Icebox" : "Showcase";
-            subject.storagePlace = storagePlace;
-
-
+            var die = _random.Next(0, 2);
+            var storagePlace = die == 0 ? StoragePlaces.Icebox : StoragePlaces.Showcase;
+            return storagePlace;
         }
 
         private DateTime GetRandomDeliveryTime()
         {
-            
-            var random = new Random();
-            var minusDays = random.Next(1,200);
-            DateTime deliveryTime = DateTime.Now.AddDays(-minusDays);
+            var minusDays = _random.Next(1, 200);
+            var deliveryTime = DateTime.Now.AddDays(-minusDays);
             return deliveryTime;
         }
 
 
         public Store()
         {
-            do
+            InitializeStore();
+        }
+
+        private void InitializeStore()
+        {
+            for (var i = 0; i < MaxProducts; i++)
             {
                 var random = new Random();
                 var productName = _productNames[random.Next(0, _productNames.Count)];
-                
+
+                var storagePlace = GetRandomStoragePlace();
                 var deliveryTime = GetRandomDeliveryTime();
                 Product productToAdd = productName switch
                 {
                     "Fish" => new Fish(storagePlace, deliveryTime),
                     "Milk" => new Milk(storagePlace, deliveryTime),
-                    _ => null
+                    "Salt" => new Salt(storagePlace, deliveryTime),
+                    "Corn" => new Corn(storagePlace, deliveryTime),
+                    _ => throw new Exception("Tak ne doljno bit!"),
                 };
-                GetRandomStoragePlace(productToAdd);
-                _productsInStock.Add(productToAdd);
-                
-            } while (_productsInStock.Count < MaxProd);
-           
 
+                _productsInStock.Add(productToAdd);
+            }
+        }
+
+        public void Show()
+        {
+            Console.WriteLine("Product | Delivered at | Storage place | S. life days | Fresh");
             foreach (var productInStock in _productsInStock)
             {
-                // productInStock.IsFresh();
-                Console.WriteLine($"{productInStock.Name} {productInStock.DeliveryTimeStamp} {productInStock.StorageLifeDays} ");
+                Console.WriteLine($"{productInStock.Name} | {productInStock.DeliveryTimeStamp} | {productInStock.StoragePlace} | {productInStock.StorageLifeDays} | {productInStock.IsFresh()}");
             }
         }
     }

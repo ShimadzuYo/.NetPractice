@@ -1,5 +1,4 @@
-﻿using System;
-using Utilities;
+﻿using Utilities;
 
 namespace Task9
 {
@@ -9,10 +8,7 @@ namespace Task9
         {
             base.Start();
             var storeTest = new Store();
-            
-            
-            
+            storeTest.Show();
         }
     }
 }
-
