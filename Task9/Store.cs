@@ -33,8 +33,12 @@ namespace Task9
         public Store()
         {
             InitializeStore();
+            
+            // Reflection
+            // TODO: try to initialize products with reflection
         }
 
+        
         private void InitializeStore()
         {
             for (var i = 0; i < MaxProducts; i++)

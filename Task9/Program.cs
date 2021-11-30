@@ -1,5 +1,4 @@
 ﻿using System;
-using Task9.Products;
 
 namespace Task9
 {
