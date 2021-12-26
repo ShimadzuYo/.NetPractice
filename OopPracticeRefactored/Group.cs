@@ -6,7 +6,6 @@ namespace OopPracticeRefactored
 {
     public class Group
     {
-        public static int MaxCapacity = 12;
         public List<Student> Students { get; } = new();
         public int Number { get; }
         public string Time { get; }
