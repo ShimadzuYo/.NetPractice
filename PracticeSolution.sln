@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task9", "Task9\Task9.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OopPractice", "OopPractice\OopPractice.csproj", "{4F38236C-A5E5-41D9-A322-A359DDE1661C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OopPracticeRefactored", "OopPracticeRefactored\OopPracticeRefactored.csproj", "{5C587635-7ACE-4F8A-9FC3-41BDAE423DC0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,5 +74,9 @@ Global
 		{4F38236C-A5E5-41D9-A322-A359DDE1661C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F38236C-A5E5-41D9-A322-A359DDE1661C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F38236C-A5E5-41D9-A322-A359DDE1661C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C587635-7ACE-4F8A-9FC3-41BDAE423DC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C587635-7ACE-4F8A-9FC3-41BDAE423DC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C587635-7ACE-4F8A-9FC3-41BDAE423DC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C587635-7ACE-4F8A-9FC3-41BDAE423DC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
