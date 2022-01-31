@@ -1,94 +1,151 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace OopPractice
 {
     public class Group
     {
-        public static int MaxCapacity = 12;
-        public List<Student> Class = new();
-        public List<Student> GraduatedStudents = new();
-        public List<Student> GraduatedWithHonorsStudents = new();
-        public List<Student> Failed = new();
+        private static int MaxCapacity = 12;
+        private List<Student> Class = new();
+        private List<Graduated> GraduatedStudents = new();
+        private List<Student> GraduatedWithHonorsStudents = new();
+        private List<Student> Failed = new();
         public int Number;
-        // I'm not sure about this, but doesn't school dictate the marks thresholds?
-        // I think group should not care about which students in group are good or bad
-        // I see group as just a container that aggregates students and provide some logic 
-        // to add/remove students
-        // And then school will make a decision about a group because it defines standards for graduation
-        // But that depends on your perspective and I might be wrong
-        public int HonorsMark = 400;
-        public int GraduationMark = 300;
         public string Time;
         public string Level;
 
-
-        // FYI
-        // Good practice to avoid 'bad' object initialization on the object creation, i.e. in Constructor
-        // This will avoid having bad objects to spread in your program
-        // You can do it the following way
-        // public Group(string level, string time)
-        // {
-        //     if (string.IsNullOrWhiteSpace(level))
-        //         throw new ArgumentNullException(nameof(level), "Level cannot be empty!");
-        //     Level = level; 
-        //     if (string.IsNullOrWhiteSpace(time))
-        //         throw new ArgumentNullException(nameof(time), "Time cannot be empty!");
-        //     Time = time;
-        // }
-        // This way you are sure, that your program will always have valid 'group' objects
-        // In case there is an attempt of creating a 'bad' group (like with level = null or '')
-        // your program will immediately report this with exception mechanism
-        // this may prevent lots of different bugs and errors
-        // It is good because you will be sure that whenever you are dealing with any 'Group' object 
-        // it is in valid state and will not have side effects
-        // e.g. imagine if you you had a group with level=null and somewhere else would try to do something with this
-        // like capitalize it (level.ToUpper()) - this would throw NulLReferenceException 
-        // since level is 'null' and 'null' does not have 'ToUpper()' method
-        public Group(string level, string time)
+        private static readonly List<string> LevelsMath = new()
         {
-            Level = level;
-            Time = time;
+            "beginner", "intermediate", "advanced"
+        };
+        
+        private static readonly List<string> LevelsEng = new()
+        {
+            "beginner", "elementary", "pre-intermediate", "intermediate"
+        };
+
+        
+
+        private static readonly List<string> TimeSlots = new()
+        {
+            "8:30", "10:00", "12:00", "14:30", "16:00"
+        };
+        
+        
+
+
+        public Group()
+        {
+            
         }
 
-        // Ideally, group should not be aware of how a student is created and be responsible to create it
-        // Better to have
-        // public void AddStudent(Student student)
-        // {
-        //     Class.Add(student);
-        // }
-        // But that's ok here, since the method name reflects its intention 
-        
-        public void CreateAndAddStudent()
+
+        public void WorkWithGroupRefactored()
+        {
+            Console.WriteLine("What would you like to do?\n Class commands:\n" +
+                              "'info' = print out all the info on a group\n" +
+                              "'add' = add a student\n" +
+                              "'edit' = edit info on a certain student\n" +
+                              "'exit' = exit");
+            Console.WriteLine($"You have chosen group number {Number} {Level} {Time}");
+            var command = Console.ReadLine()!.Trim();
+            while (command != "exit")
+            {
+                switch (command)
+                {
+                    case "add":
+                        CreateAndAddStudent();
+                        break;
+
+                    case "simulate":
+                        GraduatedStudents.Clear();
+                        Failed.Clear();
+                        GraduatedWithHonorsStudents.Clear();
+                        foreach (var stud in Class)
+                        {
+                            stud.SimulateStudent();
+                            switch (stud.status)
+                            {
+                                case "Graduated":
+                                {
+                                    var graduatedStudent = new Graduated(stud.name, stud.surname, stud.StartDate,
+                                        stud.Marks);
+                                    GraduatedStudents.Add(graduatedStudent);
+                                    break;
+                                }
+                                case "Honors":
+                                    GraduatedWithHonorsStudents.Add(stud);
+                                    break;
+                                case "Failed":
+                                    Failed.Add(stud);
+                                    break;
+                            }
+                        }
+
+                        break;
+                    case "results":
+                        OutputResultsRefactored();
+                        break;
+                    case "info":
+                        PrintInfo();
+                        break;
+                    case "edit":
+                        Console.WriteLine("Enter student`s name please:");
+                        var name = Console.ReadLine()?.Trim();
+                        Console.WriteLine("Enter student`s surname please:");
+                        var surname = Console.ReadLine()?.Trim();
+
+                        foreach (var editCandidate in Class.Where(stud => stud.name == name && stud.surname == surname))
+                        {
+                            editCandidate.EditStudentRefactored();
+                        }
+
+                        break;
+                    case "remove":
+                        RemoveStudentByFullName();
+                        break;
+
+                    case "exit":
+                        break;
+                }
+
+                Console.WriteLine("What next?");
+                command = Console.ReadLine()!.Trim();
+            }
+        }
+
+        private void CreateAndAddStudent()
         {
             while (true)
             {
                 Console.WriteLine("Enter the student's name please: ");
                 var studentName = Console.ReadLine();
+                Console.WriteLine("Enter the student`s surname please:");
+                var studentSurname = Console.ReadLine();
                 var year = DateTime.Now.Year;
                 Console.WriteLine("Enter the student's month of entry: ");
                 var month = int.Parse(Console.ReadLine() ?? string.Empty);
                 Console.WriteLine("Enter the student's day of entry: ");
                 var day = int.Parse(Console.ReadLine() ?? string.Empty);
                 DateTime studentEntryDate = new DateTime(year, month, day);
-                var stud = new Student(studentName, studentEntryDate);
+                var stud = new Student(studentName, studentSurname, studentEntryDate);
                 Class.Add(stud);
                 Console.WriteLine("Would you like to continue? Y or N");
                 var command = Console.ReadLine()?.ToUpper().Trim();
-                if (command == "N")
+                if (command == "N" || Class.Count > MaxCapacity)
                 {
                     break;
-                } 
+                }
             }
         }
 
-        // good
-        public void PrintInfo()
+        private void PrintInfo()
         {
             foreach (var stud in Class)
             {
                 Console.WriteLine(
-                    $"{stud.name} {stud.StartDate.ToShortDateString()} {stud.EndOfCourse.Date.ToShortDateString()}");
+                    $"{stud.name} {stud.surname} {stud.StartDate.ToShortDateString()} {stud.EndOfCourse.Date.ToShortDateString()}");
             }
 
             if (Class.Count == 0)
@@ -97,57 +154,59 @@ namespace OopPractice
             }
         }
 
-        // Better to name it RemoveStudentByName
-        // Good
-        public void RemoveStudent(string name)
+        private void RemoveStudentByFullName()
         {
-            // FYI
-            // Could be rewritten like Class.RemoveAll(student => student.name == name); 
-            // but that would remove all students with the same name, so your solution is better in that sense
-            // However, if you have 2 "John's", this method will remove only "John" who appears first
-            // This is already another problem and up to you how to build this logic.
+            Console.WriteLine("Enter their name please: ");
+            var name = Console.ReadLine();
+            Console.WriteLine("Now their surname please:");
+            var surname = Console.ReadLine();
             foreach (var student in Class)
             {
-                if (name == student.name)
+                if (name == student.name && surname == student.surname)
                 {
                     Class.Remove(student);
+
+                    Failed.Remove(student);
+                    GraduatedWithHonorsStudents.Remove(student);
                     break;
                 }
             }
         }
 
 
-        public void OutputResults()
-        {
-            Console.WriteLine("Honorary graduates:");
-            // this for each loop is repeated 3 times, you could utilize the fact
-            // that all 3 lists contain 'Student's and create a helper method to output 
-            // students names and marks (see OutputResultsRefactored & PrintStudents below)
-            foreach (var honor in GraduatedWithHonorsStudents)
-            {
-                Console.WriteLine($"{honor.name} {honor.marks}");
-            }
+        // public void OutputResults()
+        // {
+        //     Console.WriteLine("Honorary graduates:");
+        //     // this for each loop is repeated 3 times, you could utilize the fact
+        //     // that all 3 lists contain 'Student's and create a helper method to output 
+        //     // students names and marks (see OutputResultsRefactored & PrintStudents below)
+        //     foreach (var honor in GraduatedWithHonorsStudents)
+        //     {
+        //         Console.WriteLine($"{honor.name} {honor.marks}");
+        //     }
+        //
+        //     Console.WriteLine("Regular dummies:");
+        //     foreach (var normie in GraduatedStudents)
+        //     {
+        //         Console.WriteLine($"{normie.name} {normie.marks}");
+        //     }
+        //
+        //     Console.WriteLine("The actual dumbasses:");
+        //     foreach (var retard in Failed)
+        //     {
+        //         Console.WriteLine($"{retard.name} {retard.marks}");
+        //     }
+        // }
 
-            Console.WriteLine("Regular dummies:");
-            foreach (var normie in GraduatedStudents)
-            {
-                Console.WriteLine($"{normie.name} {normie.marks}");
-            }
-            Console.WriteLine("The actual dumbasses:");
-            foreach (var retard in Failed)
-            {
-                Console.WriteLine($"{retard.name} {retard.marks}");
-            }
-        } 
-        
-        public void OutputResultsRefactored()
+        private void OutputResultsRefactored()
         {
             Console.WriteLine("Honorary graduates:");
             PrintStudents(GraduatedWithHonorsStudents);
 
             Console.WriteLine("Regular dummies:");
             PrintStudents(GraduatedStudents);
-            
+
+
             Console.WriteLine("The actual dumbasses:");
             PrintStudents(Failed);
         }
@@ -156,28 +215,61 @@ namespace OopPractice
         {
             foreach (var student in students)
             {
-                Console.WriteLine($"{student.name} {student.marks}");
+                Console.WriteLine($"{student.name} {student.surname} {student.Marks}");
             }
         }
 
-        public void SimulateResults()
+        private void PrintStudents(List<Graduated> students)
         {
-            foreach (var stud in Class)
+            foreach (var student in students)
             {
-                stud.SimulateStudent();
-                if (stud.marks < GraduationMark)
+                Console.WriteLine($"{student.name} {student.surname} {student.Marks}");
+            }
+        }
+
+        public void GenerateRandomEngGroup()
+        { 
+                // Random object is generated on each loop iteration, better to move it outside the loop
+                // so it is created once
+                var rand = new Random();
+                var die = rand.Next(0, LevelsEng.Count);
+
+                for (var j = 0; j < LevelsEng.Count; j++)
                 {
-                    Failed.Add(stud);
+                    if (j == die)
+                    {
+                        Level = LevelsEng[j];
+                    }
                 }
 
-                if (stud.marks > GraduationMark && stud.marks < HonorsMark)
+                for (var k = 0; k < LevelsEng.Count; k++)
                 {
-                    GraduatedStudents.Add(stud);
+                    if (k == die)
+                    {
+                        Time = TimeSlots[k];
+                    }
                 }
+        }
+        public void GenerateRandomMathGroup()
+        { 
+            // Random object is generated on each loop iteration, better to move it outside the loop
+            // so it is created once
+            var rand = new Random();
+            var die = rand.Next(0, LevelsMath.Count);
 
-                if (stud.marks > HonorsMark)
+            for (var j = 0; j < LevelsMath.Count; j++)
+            {
+                if (j == die)
                 {
-                    GraduatedWithHonorsStudents.Add(stud);
+                    Level = LevelsMath[j];
+                }
+            }
+
+            for (var k = 0; k < TimeSlots.Count; k++)
+            {
+                if (k == die)
+                {
+                    Time = TimeSlots[k];
                 }
             }
         }
