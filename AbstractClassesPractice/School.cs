@@ -22,6 +22,14 @@ namespace AbstractClassesPractice
             };
             gena.Print();
 
+            var gena2 = new GenericExampleSon("Failed")
+            {
+                Name = 123,
+                ID = 456,
+                Surname = 678,
+            };
+            gena2.Print();
+
         }
     }
 }

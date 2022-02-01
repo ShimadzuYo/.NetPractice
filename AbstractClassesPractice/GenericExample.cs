@@ -8,7 +8,7 @@ namespace AbstractClassesPractice
         public T1 Surname { get; set; }
         public T2 ID { get; set; }
 
-        public void Print()
+        public virtual void Print()
         {
             Console.WriteLine($"{Name} {Surname} {ID}");
         }
