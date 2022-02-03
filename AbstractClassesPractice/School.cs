@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace AbstractClassesPractice
 {
@@ -30,6 +31,12 @@ namespace AbstractClassesPractice
             };
             gena2.Print();
 
+            var dummy = new List<int>()
+            {
+                1, 2, 3
+            };
+
+            var dummyCount = dummy.Sum();
         }
     }
 }
