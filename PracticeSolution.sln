@@ -30,6 +30,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InheritanceAndTypeChange", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbstractClassesPractice", "AbstractClassesPractice\AbstractClassesPractice.csproj", "{211F4687-FEAC-4F01-970C-2C0654C1CD6A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TryCatchPractice", "TryCatchPractice\TryCatchPractice.csproj", "{60254C47-3A08-4AD9-BA76-32F9B1082085}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DelegatePractice", "DelegatePractice\DelegatePractice.csproj", "{AFA1CF12-4793-462D-9ED4-204F164E6199}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -96,5 +100,13 @@ Global
 		{211F4687-FEAC-4F01-970C-2C0654C1CD6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{211F4687-FEAC-4F01-970C-2C0654C1CD6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{211F4687-FEAC-4F01-970C-2C0654C1CD6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60254C47-3A08-4AD9-BA76-32F9B1082085}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60254C47-3A08-4AD9-BA76-32F9B1082085}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60254C47-3A08-4AD9-BA76-32F9B1082085}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60254C47-3A08-4AD9-BA76-32F9B1082085}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFA1CF12-4793-462D-9ED4-204F164E6199}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFA1CF12-4793-462D-9ED4-204F164E6199}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFA1CF12-4793-462D-9ED4-204F164E6199}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFA1CF12-4793-462D-9ED4-204F164E6199}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
