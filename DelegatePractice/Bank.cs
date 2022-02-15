@@ -1,9 +1,7 @@
-﻿using System;
-
-namespace DelegatePractice
+﻿namespace DelegatePractice
 {
-    
-public delegate void AccountHandler(string message);
+    public delegate void AccountHandler(string message);
+
     public class Bank
     {
         private int AccountBalance;
@@ -19,19 +17,10 @@ public delegate void AccountHandler(string message);
             AccountBalance -= howmuch;
             del?.Invoke($"{AccountBalance} is your current balance.");
         }
+
         void RegisterDelegate(AccountHandler accountHandler)
         {
             del = accountHandler;
         }
-
-        
-    
-    
-    
-    
-    
-    
-    
-    
     }
 }
