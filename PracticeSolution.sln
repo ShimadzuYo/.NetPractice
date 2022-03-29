@@ -34,6 +34,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TryCatchPractice", "TryCatc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DelegatePractice", "DelegatePractice\DelegatePractice.csproj", "{AFA1CF12-4793-462D-9ED4-204F164E6199}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaces", "Interfaces\Interfaces.csproj", "{9F02E654-6A4D-481F-8F41-060A73E90C4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poker", "Poker\Poker.csproj", "{DC66693B-37D7-47D0-8024-87EFB29654D0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -108,5 +112,13 @@ Global
 		{AFA1CF12-4793-462D-9ED4-204F164E6199}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFA1CF12-4793-462D-9ED4-204F164E6199}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFA1CF12-4793-462D-9ED4-204F164E6199}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F02E654-6A4D-481F-8F41-060A73E90C4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F02E654-6A4D-481F-8F41-060A73E90C4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F02E654-6A4D-481F-8F41-060A73E90C4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F02E654-6A4D-481F-8F41-060A73E90C4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC66693B-37D7-47D0-8024-87EFB29654D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC66693B-37D7-47D0-8024-87EFB29654D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC66693B-37D7-47D0-8024-87EFB29654D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC66693B-37D7-47D0-8024-87EFB29654D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
