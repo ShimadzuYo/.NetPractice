@@ -46,22 +46,20 @@ namespace Poker
 
             foreach (var card in handAndTable)
             {
-                for (var i = 0; i <= handAndTable.Count - 1; i++)
+                bool containsTheCard = comboList.Contains(card.rank + card.suit);
+                if (!containsTheCard)
                 {
-                    if (card.Equals(handAndTable[i]))
+                    for (var i = 0; i <= handAndTable.Count - 1; i++)
                     {
-                        continue;
-                    }
-
-                    if (card.rank == handAndTable[i].rank)
-                    {
-                        pairCounter += 1;
-                        string pairInString = handAndTable[i].rank + handAndTable[i].suit + card;
-                        bool containsPair = comboList.Contains(pairInString);
-                        
-
-                        if (!containsPair)
+                        if (card.Equals(handAndTable[i]))
                         {
+                            continue;
+                        }
+
+                        if (card.rank == handAndTable[i].rank)
+                        {
+                            pairCounter += 1;
+                            var pairInString = handAndTable[i].rank + handAndTable[i].suit + card;
                             comboList.Add(pairInString);
                             Console.WriteLine(pairInString);
                         }
