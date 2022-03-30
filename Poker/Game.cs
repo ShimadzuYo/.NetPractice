@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
 
 namespace Poker
 {
@@ -41,30 +39,14 @@ namespace Poker
 
         public void CalculateCombos(List<Card> handAndTable)
         {
-            var pairCounter = 0;
-            var comboList = new List<string>();
-
-            foreach (var card in handAndTable)
+            for (var i = 0; i < handAndTable.Count; i++)
             {
-                for (var i = 0; i <= handAndTable.Count - 1; i++)
+                for (var j = i + 1; j < handAndTable.Count; j++)
                 {
-                    if (card.Equals(handAndTable[i]))
+                    if (handAndTable[i].rank == handAndTable[j].rank)
                     {
-                        continue;
-                    }
-
-                    if (card.rank == handAndTable[i].rank)
-                    {
-                        pairCounter += 1;
-                        string pairInString = handAndTable[i].rank + handAndTable[i].suit + card;
-                        bool containsPair = comboList.Contains(pairInString);
-                        
-
-                        if (!containsPair)
-                        {
-                            comboList.Add(pairInString);
-                            Console.WriteLine(pairInString);
-                        }
+                        var pairInString = $"{handAndTable[i]} {handAndTable[j]}";
+                        Console.WriteLine(pairInString);
                     }
                 }
             }
