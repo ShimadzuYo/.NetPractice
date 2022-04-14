@@ -1,12 +1,11 @@
-﻿using System;
-
-namespace Poker
+﻿namespace Poker
 {
-    class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
-            var game = new Game();
+            IPoker poker = new HoldemPoker();
+            poker.Open();
         }
     }
 }

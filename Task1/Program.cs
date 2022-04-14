@@ -1,4 +1,8 @@
-﻿namespace Task1
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Task1
 {
     // ctrl + p (show argument hint inside method)
     // ctrl + q (show documentation)

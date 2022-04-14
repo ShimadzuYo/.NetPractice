@@ -1,7 +1,8 @@
 ﻿namespace Poker
 {
-    public interface IHand
+    public interface IPoker
     {
         void CalculateCombos();
+        void Open();
     }
 }
