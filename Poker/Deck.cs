@@ -19,18 +19,22 @@ namespace Poker
                 var heartCard = new Card();
                 heartCard.suit = Suits[1];
                 heartCard.rank = Ranks[i];
+                heartCard.rankNum = Ranks.IndexOf(heartCard.rank);
                 cards.Add(heartCard);
                 var spadeCard = new Card();
                 spadeCard.suit = Suits[0];
                 spadeCard.rank = Ranks[i];
+                spadeCard.rankNum = Ranks.IndexOf(spadeCard.rank);
                 cards.Add(spadeCard);
                 var clubCard = new Card();
                 clubCard.suit = Suits[3];
                 clubCard.rank = Ranks[i];
+                clubCard.rankNum = Ranks.IndexOf(clubCard.rank);
                 cards.Add(clubCard);
                 var diamondCard = new Card();
                 diamondCard.suit = Suits[2];
                 diamondCard.rank = Ranks[i];
+                diamondCard.rankNum = Ranks.IndexOf(diamondCard.rank);
                 cards.Add(diamondCard);
             }
         }

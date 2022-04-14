@@ -16,17 +16,9 @@ namespace Poker
         public readonly List<string> Suits = new() {"\u2660", "\u2665", "\u2666", "\u2663"};
 
 
-        public Card()
-        {
-            
-
-
-        }
-
-
         public override string ToString()
         {
-            return rankNum + rank + suit;
+            return rank + suit;
         }
     }
 }

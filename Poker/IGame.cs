@@ -7,6 +7,6 @@ namespace Poker
         List<Card> GiveCards(Deck deck);
        
 
-        bool CalculatePair(List<Card> handAndTable);
+        void Calculate(List<Card> handAndTable);
     }
 }
