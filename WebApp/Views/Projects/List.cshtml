@@ -1,0 +1,29 @@
+@model WebApp.Models.Projects.ProjectListViewModel
+
+@{
+    Layout = "_Layout";
+}
+
+<h2>List of projects</h2>
+
+<table class="table table-hover">
+    <thead>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Priority</th>
+    <th>Actions</th>
+    </thead>
+    <tbody>
+        @foreach (var project in Model.Projects)
+        {
+            <tr>
+                <td>@project.Id</td>
+                <td>@project.Name</td>
+                <td>@project.Priority</td>
+                <td>
+                    <a class="btn btn-info" role="button" asp-action="Details" asp-route-id="@project.Id">Details</a>
+                </td>
+            </tr>
+        }    
+    </tbody>
+</table>
