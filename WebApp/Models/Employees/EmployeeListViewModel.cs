@@ -1,6 +1,6 @@
 using Domain;
 
-namespace WebApp.Models;
+namespace WebApp.Models.Employees;
 
 public class EmployeeListViewModel
 {
